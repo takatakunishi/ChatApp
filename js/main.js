@@ -17,10 +17,21 @@
   const db = firebase.firestore();
   const collection = db.collection('messages');
 
-  collection.add({
-    messsage: 'test'
-  }).then(doc=>{
-    console.log(`${doc.id} added!`);
-  }).catch(error => {
-    console(error);
+  const message = document.getElementById('message');
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit',e => {
+    e.preventDefault();
+
+    collection.add({
+      messsage: message.value
+    }).then(doc=>{
+      console.log(`${doc.id} added!`);
+      message.value ='';
+      message.focus();
+    }).catch(error => {
+      console(error);
+    });
   });
+
+  message.focus();
