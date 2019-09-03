@@ -17,6 +17,8 @@
   const db = firebase.firestore();
   const collection = db.collection('messages');
 
+  const auth = firebase.auth();
+
   const message = document.getElementById('message');
   const form = document.querySelector('form');
   const messages = document.getElementById('messages');
